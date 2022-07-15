@@ -1,4 +1,5 @@
 import base64
+import chunk
 from operator import mod
 import text_chunk
 
@@ -67,15 +68,15 @@ def chunkstring(string, length):
     return (string[0+i:length+i] for i in range(0, len(string), length))
 
 #itera por cada grupo de caracteres quebrados pelo blocksize
-# for chunk in codedText[:chunkSize]:
-    # originalChunk = text_chunk.TextChunk.int_value(self=chunk)
+for chunk in codedText[:chunkSize]:
+    originalChunk = text_chunk.TextChunk(chunk)
     # originalChunk = base64.b64decode(chunk)
-    # encodedChunk = originalChunk.pow(originalChunk, key, modulus)
+    encodedChunk = originalChunk.pow(originalChunk, key, modulus)
     # print(chunk)
 
 v = chunkstring(codedText, chunkSize)
 
-print(v)
+print(encodedChunk)
 
 # a= text_chunk.TextChunk(srcFileText)
 # print(a)
